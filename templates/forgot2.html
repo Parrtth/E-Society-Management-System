@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="utf-8">
+    <title>Blaze Galaxy - Society Mamangement</title>
+{%  include 'links.html' %}
+</head>
+
+<body>
+    {% include 'nav.html' %}
+
+
+
+
+    <!-- Blog Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container">
+          <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+              <h5 class="text-primary text-uppercase" style="letter-spacing: 5px;">Login</h5>
+              <h1 class="display-5 mb-0">Update Your Details</h1>
+          </div>
+          <div class="row g-5">
+              <div class="col-4"></div>
+              <div class="col-8">
+                {{ form.errors }}
+                {{ form.non_field_errors }}
+
+                  <form method="POST" class="post-form" action="/forgot3/{{login.id}}">  
+                      {% csrf_token %}  
+                  <div class="container">  
+              <br>  
+                <div class="form-group row">  
+                  <label class="col-sm-1 col-form-label"></label>  
+                  <div class="col-sm-8">  
+                  <h3>Confirm Answer</h3>  
+                  </div>  
+                </div>
+                <input type="hidden" name="loginid" id="loginid" value="{{login.id}}"/>
+                <input type="hidden" name="mobileno" id="mobileno" value="{{login.mobileno}}"/>  
+                <input type="hidden" name="usertype" id="usertype" value="{{login.usertype}}"/>
+                <input type="hidden" name="security_question" id="security_question" value="{{login.security_question}}"/>  
+                <input type="hidden" name="answer" id="answer" value="{{login.answer}}"/>  
+                <input type="hidden" name="status" id="status" value="{{login.status}}"/>  
+                <input type="hidden" name="registerdate" id="registerdate" value="2023-01-01"/>  
+                  
+                
+                
+              <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Security Question:</label>  
+                <div class="col-sm-4">  
+                  {{ login.security_question }}  
+                </div>  
+              </div>  
+
+              <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">Answer:</label>  
+                <div class="col-sm-4">  
+                  <input type="text" name="answer1" id="answer1" class="form-control" />
+                </div>  
+              </div>  
+
+              <div class="form-group row">  
+                <label class="col-sm-2 col-form-label">New Password:</label>  
+                <div class="col-sm-4">  
+                  <input type="password" name="password" id="password" class="form-control"/>  
+                </div>  
+              </div>
+                
+              <div class="form-group row">  
+                <label class="col-sm-1 col-form-label"></label>  
+                <div class="col-sm-4">  
+                <button type="submit" id="submit" class="btn btn-primary">Submit</button>  
+                </div>  
+              </div>  
+              </div>  
+              </form>   
+      </div>
+             
+           </div>
+      </div>
+    </div>
+    <!-- Blog End -->
+    
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light mt-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container pt-5">
+          <div class="row g-5">
+              <div class="col-lg-3 col-md-6">
+                  
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  
+              </div>
+              <div class="col-12">
+                  <form class="mx-auto" style="max-width: 600px;">
+                      <div class="input-group">
+                          <input type="text" class="form-control border-white p-3" placeholder="Your Email">
+                          <button class="btn btn-primary px-4">Sign Up</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="container-fluid bg-primary text-light py-4">
+      <div class="container">
+          <div class="row g-5">
+              <div class="col-md-6 text-center text-md-start">
+                  <p class="mb-md-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved.</p>
+              </div>
+              <div class="col-md-6 text-center text-md-end">
+                  <p class="mb-0">Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-secondary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+      $(document).ready(function(){
+
+        $("#submit").on('click',function(e){
+
+          var ans1= $("#answer").val();
+          var ans2= $("#answer1").val();
+          
+          if(ans1 != ans2)
+          {
+            alert("Answer Did not match");
+            return false;
+          }
+
+        });
+
+      });
+    </script>
+</body>
+
+</html>
